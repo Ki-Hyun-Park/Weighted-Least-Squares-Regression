@@ -1,0 +1,27 @@
+---
+title: "test_file1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("tinytex", repos = "http://cran.us.r-project.org")
+library(tinytex)
+```
+
+```{r}
+#some random data
+x <- c(1, 2, 3, 4)
+t <- c(1, 3, 2, 4)
+
+#lm with weights
+a1 <- c(1, 1, 1, 1)
+model1 <- lm(t ~ x, weights = a1)
+plot(x, t, xlim = c(0, 5), ylim = c(0, 5), asp = 1)
+abline(model1)
+print(model1$coefficients)
+
+```
